@@ -1,16 +1,13 @@
 "use client"
 
 import { useEffect, useState, useRef } from 'react';
-import { useTheme } from 'next-themes';
-import { ThemeProvider } from '@/components/ui/theme-provider';
 import Frame from 'react-frame-component';
 import { Button } from "@/components/ui/button"
-import { Component as BarChart } from '../app/components/BarChart';
+import { Component as BarChart } from './BarChart';
 import { ResponsiveContainer } from 'recharts';
 import { ResizableBox } from 'react-resizable';
 import Draggable from 'react-draggable';
-import { MyFirstGrid } from '../app/components/Grid';
-import { Separator } from "@/components/ui/separator"
+import { MyFirstGrid } from './Grid';
 
 // Grid layout styles
 const gridLayoutStyles = `
@@ -43,7 +40,7 @@ const gridLayoutStyles = `
   visibility: hidden;
 }
 .react-grid-item.react-grid-placeholder {
-  background: lightgrey;
+  background: red;
   opacity: 0.2;
   transition-duration: 100ms;
   z-index: 2;
@@ -52,17 +49,6 @@ const gridLayoutStyles = `
 .react-grid-item > .react-resizable-handle {
   position: absolute;
   width: 20px;
-  height: 20px;
-  bottom: 0;
-  right: 0;
-  cursor: se-resize;
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-
-.react-grid-item:hover > .react-resizable-handle {
-  opacity: 1;
-}
   height: 20px;
 }
 `;
@@ -78,14 +64,14 @@ const resizableStyles = `
   background-repeat: no-repeat;
   background-origin: content-box;
   box-sizing: border-box;
-  opacity: 0;
+  opacity: 0.6;
   transition: opacity 0.2s ease;
   background-image: url('data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgaWQ9IlNWR1JlcG9fYmdDYXJyaWVyIiBzdHJva2Utd2lkdGg9IjAiPjwvZz48ZyBpZD0iU1ZHUmVwb190cmFjZXJDYXJyaWVyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvZz48ZyBpZD0iU1ZHUmVwb19pY29uQ2FycmllciI+IDxwYXRoIGQ9Ik0yMSAxNUwxNSAyMU0yMSA4TDggMjEiIHN0cm9rZT0iIzAwMDAwMCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD4gPC9nPjwvc3ZnPg==');
   background-position: bottom right;
   padding: 0 3px 3px 0;
 }
 .hover-handles .react-resizable-handle {
-  opacity: 0.6;
+  opacity: 0;
 }
 .hover-handles:hover .react-resizable-handle {
   opacity: 0.6;
@@ -150,7 +136,6 @@ const FrameWithStyles = () => {
   const [mounted, setMounted] = useState(false);
   const [nextStyles, setNextStyles] = useState('');
   const nodeRef = useRef(null);
-  const { theme } = useTheme();
 
   useEffect(() => {
     const styleLink = document.querySelector('link[rel="stylesheet"]');
@@ -191,17 +176,9 @@ const FrameWithStyles = () => {
         ]}
         initialContent='<!DOCTYPE html><html><head></head><body><div id="mountHere"></div></body></html>'
       >
-        <ThemeProvider attribute="class" defaultTheme="dark" >
-          <div className="p-6 space-y-4">
-          {/* <h1 className="text-3xl font-bold text-blue-600">Hello from Frame ()!</h1> */}
-          <div className="space-y-1">
-            <h4 className=" font-medium leading-none">Hello from iFrame</h4>
-            <p className="text-sm text-muted-foreground">
-            Testing Tailwind and ShadCN inside Iframe.
-            </p>
-          </div>
-          <Separator className="my-4" />
-
+        <div className="p-6 space-y-4">
+          <h1 className="text-3xl font-bold text-blue-600">Hello from Frame (Testing Tailwind and ShadCN inside Iframe)!</h1>
+          
           <div className="space-x-4">
             <Button variant="destructive">Button (Destructive)</Button>
             <Button variant="outline">Button (Outline)</Button>
@@ -213,38 +190,8 @@ const FrameWithStyles = () => {
           <div className="my-4">
             <MyFirstGrid />
           </div>
-          <div className="relative" style={{ width: '100%', display: 'inline-block' }}>
-            {/* <Draggable
-              nodeRef={nodeRef}
-              axis="x"
-              handle=".handle"
-              defaultPosition={{x: 0, y: 0}}
-              position={null}
-              grid={[25, 25]}
-              scale={1}
-              onStart={this.handleStart}
-              onDrag={this.handleDrag}
-              onStop={this.handleStop}      
-            > */}
-              {/* <ResizableBox
-                ref={nodeRef}
-                className="react-resizable hover-handles" 
-                width={600}
-                height={400}
-                minConstraints={[200, 200]} 
-                maxConstraints={[1200, 800]}
-                resizeHandles={[ 'se']}
-                lockAspectRatio={false}
-                style={{ display: 'inline-block' }}
-              >
-                <div style={{ width: '100%', height: '100%' }}>
-                  <BarChart />
-                </div>
-              </ResizableBox> */}
-            {/* </Draggable> */}
-          </div>
         </div>
-          </ThemeProvider>
+
       </Frame>
     </div>
   );

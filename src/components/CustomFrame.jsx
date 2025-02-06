@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import Frame, { FrameContextConsumer } from 'react-frame-component';
-import '../globals.css'; 
+// import '../globals.css'; 
 
 const CustomIframe = ({ children }) => {
   const [styles, setStyles] = useState('');

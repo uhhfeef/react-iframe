@@ -1,9 +1,9 @@
 "use client"
-import CustomIframe from './components/CustomFrame';
-import MyComponent from './components/MyComponent';
+import CustomIframe from '../components/CustomFrame';
+import MyComponent from '../components/MyComponent';
 import { Button } from "@/components/ui/button"
 import FrameWithStyles from '../components/ReactFrame';
-import { Component as BarChart } from './components/BarChart';
+import { Component as BarChart } from '../components/BarChart';
 import { ResizableBox } from 'react-resizable';
 
 export default function Home() {  

@@ -1,10 +1,10 @@
 "use client"
 import React from "react";
 import GridLayout from "react-grid-layout";
-import { Component as BarChart } from '../app/components/BarChart';
-import { Component as PieChart } from '../app/components/PieChart';
-import { Component as AreaChart } from '../app/components/AreaChart';
-import { Component as BarChartInteractive } from '../app/components/BarChartInteractive';
+import { Component as BarChart } from './BarChart';
+import { Component as PieChart } from './PieChart';
+import { Component as AreaChart } from './AreaChart';
+import { Component as BarChartInteractive } from './BarChartInteractive';
 
 export class MyFirstGrid extends React.Component {
   render() {
