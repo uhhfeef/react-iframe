@@ -18,9 +18,7 @@ export default function Home() {
       </CustomIframe> */}
       <FrameWithStyles />
       
-      {/* <ResizableBox width={200} height={200}>
-        <BarChart />
-      </ResizableBox> */}
+
     </>
   );
 

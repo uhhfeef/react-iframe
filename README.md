@@ -4,6 +4,10 @@ A reverse-engineered implementation inspired by Anthropic's Claude Artifacts and
 
 The implementation showcases the technical approach behind these platforms' ability to create dynamic, sandboxed UI components while maintaining consistent styling and interactivity across different contexts.
 
+## Demo
+
+![Demo of React IFrame Portal](/demo.gif)
+
 ## Features
 
 - **React Portal Integration**: Seamlessly render components inside iframes using React Portals
