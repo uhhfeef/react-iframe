@@ -39,17 +39,17 @@ const chartConfig = {
 
 export function Component() {
   return (
-    <Card className="h-full flex flex-col">
+    <Card className="h-full w-full flex flex-col">
       <CardHeader>
         <CardTitle>Bar Chart - Multiple</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
       </CardHeader>
       <CardContent className="flex-1 min-h-0">
         <ChartContainer className="h-full w-full" config={chartConfig}>
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart accessibilityLayer data={chartData}>
-              <CartesianGrid vertical={false} />
-              <XAxis
+          {/* <ResponsiveContainer width="100%" height="100%"> */}
+          <BarChart accessibilityLayer data={chartData}>
+            <CartesianGrid vertical={false} />
+            <XAxis
                 dataKey="month"
                 tickLine={false}
                 tickMargin={10}
@@ -63,7 +63,7 @@ export function Component() {
               <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
               <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
             </BarChart>
-          </ResponsiveContainer>
+          {/* </ResponsiveContainer> */}
         </ChartContainer>
       </CardContent>
       <CardFooter className="flex-col items-start gap-2 text-sm">
