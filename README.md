@@ -6,7 +6,7 @@ The implementation showcases the technical approach behind these platforms' abil
 
 ## Demo
 
-![Demo of React IFrame Portal](/demo.gif)
+![Demo of React IFrame Portal](./public/demo.gif)
 
 ## Features
 
