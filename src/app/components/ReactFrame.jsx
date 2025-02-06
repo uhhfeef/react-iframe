@@ -4,25 +4,10 @@ import { useEffect, useState } from 'react';
 import Frame from 'react-frame-component';
 import { Button } from "@/components/ui/button"
 import { Component as BarChart } from './BarChart';
+import { ResponsiveContainer } from 'recharts';
 import { ResizableBox } from 'react-resizable';
 import Draggable from 'react-draggable';
-import 'react-resizable/css/styles.css';
 
-const styles = {
-  box: {
-    border: '2px solid #ccc',
-    borderRadius: '8px',
-    padding: '10px',
-    position: 'relative',
-    background: 'white'
-  },
-  container: {
-    width: '100%',
-    minHeight: '400px',
-    position: 'relative',
-    display: 'inline-block'
-  }
-};
 
 const resizableStyles = `
 .react-resizable {
@@ -30,14 +15,26 @@ const resizableStyles = `
 }
 .react-resizable-handle {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   background-repeat: no-repeat;
   background-origin: content-box;
   box-sizing: border-box;
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2IDYiIHN0eWxlPSJiYWNrZ3JvdW5kLWNvbG9yOiNmZmZmZmYwMCIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iNnB4Ij48ZyBvcGFjaXR5PSIwLjMwMiI+PHBhdGggZD0iTSA2IDYgTCAwIDYgTCAwIDQuMiBMIDQgNC4yIEwgNC4yIDQuMiBMIDQuMiAwIEwgNiAwIEwgNiA2IEwgNiA2IFoiIGZpbGw9IiMwMDAwMDAiLz48L2c+PC9zdmc+');
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgaWQ9IlNWR1JlcG9fYmdDYXJyaWVyIiBzdHJva2Utd2lkdGg9IjAiPjwvZz48ZyBpZD0iU1ZHUmVwb190cmFjZXJDYXJyaWVyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvZz48ZyBpZD0iU1ZHUmVwb19pY29uQ2FycmllciI+IDxwYXRoIGQ9Ik0yMSAxNUwxNSAyMU0yMSA4TDggMjEiIHN0cm9rZT0iIzAwMDAwMCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvcGF0aD4gPC9nPjwvc3ZnPg==');
   background-position: bottom right;
   padding: 0 3px 3px 0;
+}
+.hover-handles .react-resizable-handle {
+  opacity: 0;
+}
+.hover-handles:hover .react-resizable-handle {
+  opacity: 0.6;
+}
+.hover-handles:hover .react-resizable-handle:hover {
+  opacity: 1;
+  cursor: se-resize;
 }
 .react-resizable-handle-sw {
   bottom: 0;
@@ -141,17 +138,18 @@ const FrameWithStyles = () => {
             <Button variant="ghost">Shadcn Button (Ghost)</Button>
             <Button variant="link">Shadcn Button (Link)</Button>
           </div>
-          <div className="relative inline-block" style={{ minHeight: '400px' }}>
+          <div className="relative" style={{ width: '100%', display: 'inline-block' }}>
             <ResizableBox 
-              className="react-resizable" 
+              className="react-resizable hover-handles" 
               width={600}
               height={400}
-              minConstraints={[300, 200]} 
+              minConstraints={[200, 200]} 
               maxConstraints={[1200, 800]}
-              style={{ width: '100%', height: '100%' }}
-              resizeHandles={['se', 'sw', 'ne', 'nw', 'n', 's', 'e', 'w']}
+              resizeHandles={[ 'se']}
+              lockAspectRatio={false}
+              style={{ display: 'inline-block' }}
             >
-              <div  >
+              <div style={{ width: '100%', height: '100%' }}>
                 <BarChart />
               </div>
             </ResizableBox>

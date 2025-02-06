@@ -19,6 +19,7 @@
     "react-draggable": "^4.4.6",
     "react-frame-component": "^5.2.7",
     "react-resizable": "^3.0.5",
+    "react-resizable-panels": "^2.1.7",
     "react-split": "^2.0.14",
     "recharts": "^2.15.1",
     "tailwind-merge": "^3.0.1",
